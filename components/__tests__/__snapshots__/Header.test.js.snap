@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should renders default 1`] = `
+<div>
+  <Head>
+    <meta
+      charSet="utf-8"
+    />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+    <link
+      href="../static/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../static/css/style.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600"
+      rel="stylesheet"
+    />
+    <title>
+      Web Title
+    </title>
+    <script
+      src="../static/js/jquery.min.js"
+      type="text/javascript"
+    />
+    <script
+      src="../static/vendor/bootstrap/js/bootstrap.min.js"
+      type="text/javascript"
+    />
+    <script
+      src="../static/js/popper.min.js"
+      type="text/javascript"
+    />
+  </Head>
+  <header>
+    <div
+      className="navbar navbar-dark bg-dark shadow-sm"
+    >
+      <div
+        className="container d-flex justify-content-between"
+      >
+        <Link
+          href="/"
+        >
+          <a
+            className="navbar-brand d-flex align-items-center"
+            href="/"
+          >
+            <strong>
+              Web Title
+            </strong>
+          </a>
+        </Link>
+      </div>
+    </div>
+  </header>
+</div>
+`;

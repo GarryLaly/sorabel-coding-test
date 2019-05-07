@@ -1,50 +1,19 @@
 import React from "react";
+import Link from "next/link";
+import { observer } from "mobx-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import firebase from "../config/firebase";
+import store from "../stores/store";
 
 import { toCurrency } from "../helpers/formatter";
 
-class Home extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.ref = firebase.firestore().collection("products");
-    this.unsubscribe = null;
-    this.state = {
-      products: [],
-      isLoading: false
-    };
-  }
-
+class Home extends React.Component {
   componentDidMount() {
-    this.setState({ isLoading: true });
-    this.unsubscribe = this.ref.onSnapshot(querySnapshot =>
-      this.onCollectionUpdate(querySnapshot)
-    );
-  }
-
-  onCollectionUpdate(querySnapshot) {
-    const products = [];
-    querySnapshot.forEach(doc => {
-      const { slug, name, price, photo, sizes, description } = doc.data();
-      products.push({
-        id: doc.id,
-        slug,
-        name,
-        price,
-        photo,
-        sizes,
-        description
-      });
-    });
-    this.setState({
-      products,
-      isLoading: false
-    });
+    store.loadProducts();
   }
 
   render() {
-    const { products, isLoading } = this.state;
+    const { products, isLoading } = store;
 
     return (
       <div>
@@ -73,20 +42,31 @@ class Home extends React.PureComponent {
                   {products.map(item => (
                     <div key={item.id} className="col-md-4">
                       <div className="card mb-4 shadow-sm">
-                        <img src={item.photo} alt={item.slug} width="100%" />
+                        <Link href={`detail?product=${item.slug}`}>
+                          <img
+                            src={item.photo}
+                            alt={item.slug}
+                            width="100%"
+                            className="cursor-pointer"
+                          />
+                        </Link>
                         <div className="card-body">
-                          <h5>{item.name}</h5>
+                          <Link href={`detail?product=${item.slug}`}>
+                            <h5 className="cursor-pointer">{item.name}</h5>
+                          </Link>
                           <p className="card-text badge badge-success">
                             {toCurrency(item.price)}
                           </p>
                           <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
-                              <button
-                                type="button"
-                                className="btn btn-sm btn-outline-secondary"
-                              >
-                                Lihat Dulu
-                              </button>
+                              <Link href={`detail?product=${item.slug}`}>
+                                <button
+                                  type="button"
+                                  className="btn btn-sm btn-outline-secondary"
+                                >
+                                  Lihat Dulu
+                                </button>
+                              </Link>
                               <button
                                 type="button"
                                 className="btn btn-sm btn-outline-secondary"
@@ -114,4 +94,4 @@ class Home extends React.PureComponent {
   }
 }
 
-export default Home;
+export default observer(Home);

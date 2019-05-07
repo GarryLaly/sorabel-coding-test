@@ -9,14 +9,22 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
     "firebase": "^5.11.1",
+    "firestorter": "^1.2.2",
+    "mobx": "^5.9.4",
+    "mobx-firebase-database": "^2.1.3",
+    "mobx-react": "^5.4.3",
     "next": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-medium-image-zoom": "^3.0.16",
+    "superstruct": "^0.6.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.4",
